@@ -216,8 +216,8 @@ def get_readable_message():
         msg += f"by {source(download)}\n"
         if download.status() not in [MirrorStatus.STATUS_SPLITTING, MirrorStatus.STATUS_SEEDING, MirrorStatus.STATUS_PROCESSING]:
             
-            msg += f"\n⚡<a>href="https://t.me/FreeLeechUpdates" {progress_bar(download.progress())}</b>\n {download.progress()}"
-            msg += f"{download.processed_bytes()} of {download.size()}"
+            msg += f"\n⚡{progress_bar(download.progress())} {download.progress()}"
+            msg += f" ~ {download.processed_bytes()} of {download.size()}"
             msg += f"\nSpeed: {download.speed()}"
             msg += f'\nEstimated: {download.eta()}'
             if hasattr(download, 'seeders_num'):
