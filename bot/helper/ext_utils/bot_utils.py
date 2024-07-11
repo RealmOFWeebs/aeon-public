@@ -216,7 +216,7 @@ def get_readable_message():
         msg += f"by {source(download)}\n"
         if download.status() not in [MirrorStatus.STATUS_SPLITTING, MirrorStatus.STATUS_SEEDING, MirrorStatus.STATUS_PROCESSING]:
             
-            msg += f"{progress_bar(download.progress())} {download.progress()}"
+            msg += f"\n{progress_bar(download.progress())}\n {download.progress()}"
             msg += f"\n{download.processed_bytes()} of {download.size()}"
             msg += f"\nSpeed: {download.speed()}"
             msg += f'\nEstimated: {download.eta()}'
