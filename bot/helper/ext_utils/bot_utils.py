@@ -217,7 +217,7 @@ def get_readable_message():
         if download.status() not in [MirrorStatus.STATUS_SPLITTING, MirrorStatus.STATUS_SEEDING, MirrorStatus.STATUS_PROCESSING]:
             
             msg += f"\n⚡{progress_bar(download.progress())} {download.progress()}"
-            msg += f" ~ {download.processed_bytes()} of {download.size()}"
+            msg += f"\n ~ {download.processed_bytes()} of {download.size()}\n"
             msg += f"\nSpeed: {download.speed()}"
             msg += f'\nEstimated: {download.eta()}'
             if hasattr(download, 'seeders_num'):
@@ -234,7 +234,7 @@ def get_readable_message():
         else:
             msg += f"Size: {download.size()}"
         msg += f"\nElapsed: {get_readable_time(time() - download.message.date.timestamp())}</blockquote>"
-        msg += f"\n/stop_{download.gid()[:8]}\n\n"
+        msg += f"\n❌ /stop_{download.gid()[:8]}\n\n"
     if len(msg) == 0:
         return None, None
     if tasks > STATUS_LIMIT:
